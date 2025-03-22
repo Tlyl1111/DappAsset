@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/web3/dist/web3.min.js"></script>
+</head>
+<body>
+    <h1>Asset Manager</h1>
+    
+    <!-- Form to add asset -->
+    <h2>Add New Asset</h2>
+    <form id="addAssetForm">
+        <label for="name">Asset Name:</label>
+        <input type="text" id="name" required><br><br>
+
+        <label for="purchaseDate">Purchase Date (Unix Timestamp):</label>
+        <input type="number" id="purchaseDate" required><br><br>
+
+        <label for="value">Value:</label>
+        <input type="number" id="value" required><br><br>
+
+        <label for="description">Description:</label>
+        <input type="text" id="description"><br><br>
+
+        <label for="imageURL">Image URL (AWS S3 link):</label>
+        <input type="text" id="imageURL"><br><br>
+
+        <label for="note">Note:</label>
+        <input type="text" id="note"><br><br>
+
+        <button type="submit">Add Asset</button>
+    </form>
+
+    <br><br>
+
+    <!-- Display assets -->
+    <h2>Your Assets</h2>
+    <div id="assetsList"></div>
+
+    <script>
+        // Connect to Ethereum using Web3.js
+        let web3;
+        if (typeof window.ethereum !== 'undefined') {
+            web3 = new Web3(window.ethereum);
+            ethereum.request({ method: 'eth_requestAccounts' }).catch((err) => {
+                console.log('Error: ' + err);
+            });
+        } else {
+            alert('Please install MetaMask');
+        }
+
+        const contractAddress = 'YOUR_CONTRACT_ADDRESS';
+        const abi = [ /* Your smart contract ABI */ ];
+
+        const contract = new web3.eth.Contract(abi, contractAddress);
+        let currentAccount;
+
+        // Listen for account changes
+        ethereum.on('accountsChanged', function (accounts) {
+            currentAccount = accounts[0];
+        });
+
+        // Add Asset
+        
+    </script>
+</body>
+</html>
